@@ -1,3 +1,4 @@
+
 //this is the code for the homepage contains the navigation buttons like on every page and lets you save the usersname
 customElements.define("page-home", class extends HTMLElement {
     connectedCallback() {
@@ -42,7 +43,7 @@ customElements.define("page-home", class extends HTMLElement {
 });
 //this saves the inputed username
 function SaveUserName(){
-
+    
 	const UserName = document.getElementById("SaveName")
 	localStorage.setItem("UserName", UserName.value)
 
@@ -78,6 +79,10 @@ customElements.define("page-conditions", class extends HTMLElement {
 
             <ion-content>
                 <ion-card>
+                    <ion-card-content>
+                        <p>Here you can enter a medical condition and alternate names of it will be dispalyed to the right</p>
+                        <p></p>
+                    </ion-card-content>
                     <ion-card-content>
                         <ion-input type="text" id="searchInput" placeholder="Enter condition name"></ion-input>
                         <ion-button onclick="fetchName()">Get Name </ion-button>
@@ -174,13 +179,19 @@ customElements.define("page-info", class extends HTMLElement {
                     <ion-button href="#/info" expands="block" color="primary">Information</ion-button>
                 </ion-col>
             </ion-row>
-            <ion-card-content>
+                    <ion-card-content>
 						<p>This application was built with sustainability in mind, this appliaction helps user inform themselves in order to better knowledge on health.
                         all of the conditions here can be found on the NHS website to help you make further discoveries about various health conditions.</p>
 						
 					</ion-card-content>
-			<ion-content>
-            <ion-card>
+                    <ion-card-content>
+						<p>this image is of the caduceus, a staff with two snakes coiled around it, is the official insignia of the United States Medical Corps, Navy Pharmacy Division, and the Public Health Service. The caduceus is also the magic wand carried by Hermes (the Romans knew him as Mercury), the messenger of the gods.</p>
+						
+					</ion-card-content>
+            
+            
+            <ion-content>
+                <ion-card>
 					<ion-card-content>
 						<ion-img src = "./Pictures/Head.jpg" alt="Image of Brain with puzzle pieces coming out of it"></ion-img>
 						
