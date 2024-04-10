@@ -16,16 +16,27 @@ customElements.define("page-home", class extends HTMLElement {
                     <ion-button href="#/conditions" expands="block" color="primary">Conditions</ion-button>
                 </ion-col>
                 <ion-col size="auto" class="ion-text-center">
-                    <ion-button href="#/nhs" expands="block" color="primary">Information</ion-button>
+                    <ion-button href="#/info" expands="block" color="primary">Information</ion-button>
                 </ion-col>
             </ion-row>
-                
+            <ion-card>
+                <ion-card-content>
+                    <p>Welcome to the Health Inform application</p>
+                    <p>The purpose of this application is to help inform users on different mediacal conditions by helping them learn synonyms for them by querying an API </p>
+                </ion-card-content>
+            </ion-card>
             <ion-content>
 				<ion-card>
 					<ion-input type = "text" id = "SaveName" placeholder= "Enter name here: "> </ion-input>
 					<ion-button onclick="SaveUserName()">Save Name</ion-button>
 				</ion-card>
             </ion-content>
+            <ion-card>
+					<ion-card-content>
+						<ion-img src = "./Pictures/Head.jpg" alt="Image of Brain with puzzle pieces coming out of it"></ion-img>
+						
+					</ion-card-content>
+				</ion-card>
         `;
     }
 });
@@ -61,7 +72,7 @@ customElements.define("page-conditions", class extends HTMLElement {
                     <ion-button href="#/conditions" expands="block" color="primary">Conditions</ion-button>
                 </ion-col>
                 <ion-col size="auto" class="ion-text-center">
-                    <ion-button href="#/nhs" expands="block" color="primary">Information</ion-button>
+                    <ion-button href="#/info" expands="block" color="primary">Information</ion-button>
                 </ion-col>
             </ion-row>
 
@@ -76,7 +87,9 @@ customElements.define("page-conditions", class extends HTMLElement {
                         </ion-item>
                     </ion-card-content>
                 </ion-card>
-            
+                <ion-card>
+					
+				</ion-card>
 				<ion-card>
 					<ion-card-content>
 						<ion-img src = "./Pictures/Head.jpg" alt="Image of Brain with puzzle pieces coming out of it"></ion-img>
@@ -100,7 +113,7 @@ function fetchName() {
     }
 //thios makes the APi url a variable
     const url = `https://clinicaltables.nlm.nih.gov/api/conditions/v3/search?terms=${primary_name}&df=term_icd9_code,primary_name`;
-	//this fetches the data from the API
+	//this fetches the data from the API, data found from insomnia 3rd party application
     fetch(url)
         .then(response => {
             if (!response.ok) {
@@ -118,10 +131,11 @@ function fetchName() {
             console.error('There was a problem', error);
         });
 }
-
+//loops throught the array and creates a HTML item for each loop
 function extractConsumerName(data) {
-    // Assuming the consumer name is available 
+    // finds and selects the element htmlList
     const htmlList = document.getElementById('consumerName')
+    //assigns value of 4 elements of data to the array
 	const List = data[3];
 	//loops for number of object in the array and appends the data to the output list
 	for(let i = 0; i < List.length; i ++){
@@ -157,11 +171,21 @@ customElements.define("page-info", class extends HTMLElement {
                     <ion-button href="#/conditions" expands="block" color="primary">Conditions</ion-button>
                 </ion-col>
                 <ion-col size="auto" class="ion-text-center">
-                    <ion-button href="#/nhs" expands="block" color="primary">Information</ion-button>
+                    <ion-button href="#/info" expands="block" color="primary">Information</ion-button>
                 </ion-col>
             </ion-row>
-
+            <ion-card-content>
+						<p>This application was built with sustainability in mind, this appliaction helps user inform themselves in order to better knowledge on health.
+                        all of the conditions here can be found on the NHS website to help you make further discoveries about various health conditions.</p>
+						
+					</ion-card-content>
 			<ion-content>
+            <ion-card>
+					<ion-card-content>
+						<ion-img src = "./Pictures/Head.jpg" alt="Image of Brain with puzzle pieces coming out of it"></ion-img>
+						
+					</ion-card-content>
+				</ion-card>
             </ion-content>
 
         `;
